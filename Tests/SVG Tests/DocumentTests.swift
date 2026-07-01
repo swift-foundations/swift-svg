@@ -2,18 +2,16 @@
 //  DocumentTests.swift
 //  swift-svg
 //
-//  Created by Coen ten Thije Boonkkamp
-//
 
 import SVG
-import SVG_Standard
+import Dimension_Primitives_Test_Support
 import Testing
 
-@Suite("Document Tests")
-struct DocumentTests {
+@Suite
+struct `Document Tests` {
 
-    @Test("SVG element renders with dimensions")
-    func svgWithDimensions() {
+    @Test
+    func `SVG element renders with dimensions`() {
         let svgElement = svg(width: 100, height: 100) {
             circle(cx: 50, cy: 50, r: 40)
         }
@@ -26,8 +24,8 @@ struct DocumentTests {
         #expect(rendered.contains("</svg>"))
     }
 
-    @Test("SVG with nested elements renders correctly")
-    func svgWithNestedElements() {
+    @Test
+    func `SVG with nested elements renders correctly`() {
         let svgElement = svg(width: 100, height: 100) {
             rect(x: 10, y: 10, width: 80, height: 80)
         }
@@ -38,8 +36,8 @@ struct DocumentTests {
         #expect(rendered.contains("</svg>"))
     }
 
-    @Test("Pretty printing works correctly")
-    func prettyPrintingRendering() {
+    @Test
+    func `Pretty printing works correctly`() {
         let svgElement = svg {
             g {
                 circle(cx: 50, cy: 50, r: 40)
@@ -52,8 +50,8 @@ struct DocumentTests {
         #expect(rendered.contains("  "))  // Indentation
     }
 
-    @Test("Compact rendering works correctly")
-    func compactRendering() {
+    @Test
+    func `Compact rendering works correctly`() {
         let svgElement = svg {
             circle(cx: 50, cy: 50, r: 40)
         }

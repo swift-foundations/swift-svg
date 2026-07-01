@@ -2,18 +2,16 @@
 //  BasicShapesTests.swift
 //  swift-svg
 //
-//  Created by Coen ten Thije Boonkkamp
-//
 
 import SVG
-import SVG_Standard
+import Dimension_Primitives_Test_Support
 import Testing
 
-@Suite("Basic Shapes Tests")
-struct BasicShapesTests {
+@Suite
+struct `Basic Shapes Tests` {
 
-    @Test("Circle renders correctly")
-    func circleRendering() {
+    @Test
+    func `Circle renders correctly`() {
         let svg = circle(cx: 50, cy: 50, r: 40)
             .fill("red")
             .stroke("black")
@@ -30,9 +28,10 @@ struct BasicShapesTests {
         #expect(rendered.contains(#"</circle>"#))
     }
 
-    @Test("Rectangle renders correctly")
-    func rectangleRendering() {
-        let svg = rect(x: 10, y: 20, width: 100, height: 50, rx: 5)
+    @Test
+    func `Rectangle renders correctly`() {
+        let svg = rect(x: 10, y: 20, width: 100, height: 50)
+            .rx(5 as Double)
             .fill("blue")
             .opacity(0.5)
 
@@ -48,8 +47,8 @@ struct BasicShapesTests {
         #expect(rendered.contains(#"</rect>"#))
     }
 
-    @Test("Ellipse renders correctly")
-    func ellipseRendering() {
+    @Test
+    func `Ellipse renders correctly`() {
         let svg = ellipse(cx: 100, cy: 50, rx: 80, ry: 40)
             .fill("green")
 
@@ -63,8 +62,8 @@ struct BasicShapesTests {
         #expect(rendered.contains(#"</ellipse>"#))
     }
 
-    @Test("Line renders correctly")
-    func lineRendering() {
+    @Test
+    func `Line renders correctly`() {
         let svg = line(x1: 0, y1: 0, x2: 100, y2: 100)
             .stroke("red")
             .strokeWidth(2)
@@ -80,8 +79,8 @@ struct BasicShapesTests {
         #expect(rendered.contains(#"</line>"#))
     }
 
-    @Test("Polygon renders correctly")
-    func polygonRendering() {
+    @Test
+    func `Polygon renders correctly`() {
         let svg = polygon(coordinates: [(100, 10), (40, 198), (190, 78), (10, 78), (160, 198)])
             .fill("lime")
             .stroke("purple")
@@ -96,8 +95,8 @@ struct BasicShapesTests {
         #expect(rendered.contains(#"</polygon>"#))
     }
 
-    @Test("Polyline renders correctly")
-    func polylineRendering() {
+    @Test
+    func `Polyline renders correctly`() {
         let svg = polyline(points: "20,20 40,25 60,40 80,120 120,140 200,180")
             .fill("none")
             .stroke("black")

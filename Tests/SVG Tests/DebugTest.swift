@@ -2,42 +2,39 @@
 //  DebugTest.swift
 //  swift-svg
 //
-//  Created by Coen ten Thije Boonkkamp
-//
 
-import Foundation
 import SVG
-import SVG_Rendering
-import SVG_Standard
+import Dimension_Primitives_Test_Support
 import Testing
 
-@Suite("Debug")
-struct DebugTest {
-    @Test func simpleCircleRenders() {
+@Suite
+struct `Debug` {
+
+    @Test
+    func `Simple circle renders`() {
         let svgElement = circle(cx: 50, cy: 50, r: 40)
 
         let rendered = String(svgElement)
-        print("Rendered: '\(rendered)'")
         #expect(!rendered.isEmpty)
         #expect(rendered.contains("<circle"))
     }
 
-    @Test func circleWithAttributesRenders() {
+    @Test
+    func `Circle with attributes renders`() {
         let circleElement = circle(cx: 50, cy: 50, r: 40)
             .fill("red")
             .stroke("black")
             .strokeWidth(2)
 
         let rendered = String(circleElement)
-        print("Circle rendered: '\(rendered)'")
         #expect(!rendered.isEmpty)
         #expect(rendered.contains("<circle"))
         #expect(rendered.contains("fill=\"red\""))
         #expect(rendered.contains("stroke=\"black\""))
     }
 
-    @Test("Check SVG rendering for consistency")
-    func svgRenderingConsistency() {
+    @Test
+    func `Check SVG rendering for consistency`() {
         let svgElement = svg(width: 100, height: 100) {
             circle(cx: 50, cy: 50, r: 40)
                 .fill("red")
@@ -46,8 +43,6 @@ struct DebugTest {
         }
 
         let output = String(svgElement, configuration: .pretty)
-        print("Output: [\(output)]")
-        print("Length: \(output.count)")
 
         // Check the expected structure
         #expect(output.contains("<svg"))

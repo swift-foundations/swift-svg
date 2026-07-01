@@ -2,16 +2,16 @@
 //  DebugDetailedTest.swift
 //  swift-svg
 //
-//  Created by Coen ten Thije Boonkkamp
-//
 
 import SVG
-import SVG_Standard
+import Dimension_Primitives_Test_Support
 import Testing
 
-@Suite("Debug Detailed")
-struct DebugDetailedTest {
-    @Test func detailedAttributeFlow() {
+@Suite
+struct `Debug Detailed` {
+
+    @Test
+    func `Detailed attribute flow`() {
         // Test circle with method chaining
         let circleElement = circle(cx: 50, cy: 50, r: 40)
             .fill("blue")

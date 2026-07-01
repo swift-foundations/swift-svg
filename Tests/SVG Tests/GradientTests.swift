@@ -2,18 +2,16 @@
 //  GradientTests.swift
 //  swift-svg
 //
-//  Created by Coen ten Thije Boonkkamp
-//
 
 import SVG
-import SVG_Standard
+import Dimension_Primitives_Test_Support
 import Testing
 
-@Suite("Gradient Tests")
-struct GradientTests {
+@Suite
+struct `Gradient Tests` {
 
-    @Test("Linear gradient renders correctly")
-    func linearGradientRendering() {
+    @Test
+    func `Linear gradient renders correctly`() {
         let svgElement = svg {
             defs {
                 linearGradient(id: "grad1", x1: "0%", y1: "0%", x2: "100%", y2: "0%") {
@@ -39,8 +37,8 @@ struct GradientTests {
         #expect(rendered.contains("fill=\"url(#grad1)\""))
     }
 
-    @Test("Radial gradient renders correctly")
-    func radialGradientRendering() {
+    @Test
+    func `Radial gradient renders correctly`() {
         let svgElement = svg {
             defs {
                 radialGradient(id: "grad2", cx: "50%", cy: "50%", r: "50%", fx: "50%", fy: "50%") {
@@ -64,8 +62,8 @@ struct GradientTests {
         #expect(rendered.contains("stop-color=\"blue\""))
     }
 
-    @Test("Gradient with spread method renders correctly")
-    func gradientSpreadMethodRendering() {
+    @Test
+    func `Gradient with spread method renders correctly`() {
         let svgElement = linearGradient(
             id: "spread",
             x1: "30%",
@@ -80,8 +78,8 @@ struct GradientTests {
         #expect(rendered.contains("spreadMethod=\"reflect\""))
     }
 
-    @Test("Gradient transform renders correctly")
-    func gradientTransformRendering() {
+    @Test
+    func `Gradient transform renders correctly`() {
         let svgElement = linearGradient(
             id: "transformed",
             gradientTransform: "rotate(45)"

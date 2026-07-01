@@ -2,18 +2,16 @@
 //  TransformTests.swift
 //  swift-svg
 //
-//  Created by Coen ten Thije Boonkkamp
-//
 
 import SVG
-import SVG_Standard
+import Dimension_Primitives_Test_Support
 import Testing
 
-@Suite("Transform Tests")
-struct TransformTests {
+@Suite
+struct `Transform Tests` {
 
-    @Test("Transform renders correctly using method")
-    func transformMethodRendering() {
+    @Test
+    func `Transform renders correctly using method`() {
         let svgElement = rect(x: 10, y: 10, width: 50, height: 50)
             .transform("rotate(45)")
             .fill("red")
@@ -22,8 +20,8 @@ struct TransformTests {
         #expect(rendered.contains("transform=\"rotate(45)\""))
     }
 
-    @Test("Translate helper renders correctly")
-    func translateRendering() {
+    @Test
+    func `Translate helper renders correctly`() {
         let svgElement = rect(x: 0, y: 0, width: 30, height: 30)
             .translate(x: 50, y: 50)
             .fill("blue")
@@ -32,8 +30,8 @@ struct TransformTests {
         #expect(rendered.contains("transform=\"translate(50"))
     }
 
-    @Test("Rotate helper renders correctly")
-    func rotateRendering() {
+    @Test
+    func `Rotate helper renders correctly`() {
         let svgElement = rect(x: 0, y: 0, width: 30, height: 30)
             .rotate(45)
             .fill("green")
@@ -42,8 +40,8 @@ struct TransformTests {
         #expect(rendered.contains("transform=\"rotate(45)\""))
     }
 
-    @Test("Rotate with center renders correctly")
-    func rotateWithCenterRendering() {
+    @Test
+    func `Rotate with center renders correctly`() {
         let svgElement = rect(x: 0, y: 0, width: 30, height: 30)
             .rotate(45, cx: 50, cy: 50)
 
@@ -52,8 +50,8 @@ struct TransformTests {
         #expect(rendered.contains("50"))
     }
 
-    @Test("Scale helper renders correctly")
-    func scaleRendering() {
+    @Test
+    func `Scale helper renders correctly`() {
         let svgElement = rect(x: 0, y: 0, width: 30, height: 30)
             .scale(x: 2)
             .fill("purple")
@@ -62,8 +60,8 @@ struct TransformTests {
         #expect(rendered.contains("transform=\"scale(2)\""))
     }
 
-    @Test("SkewX helper renders correctly")
-    func skewXRendering() {
+    @Test
+    func `SkewX helper renders correctly`() {
         let svgElement = rect(x: 0, y: 0, width: 30, height: 30)
             .skewX(30)
 
@@ -71,8 +69,8 @@ struct TransformTests {
         #expect(rendered.contains("transform=\"skewX(30)\""))
     }
 
-    @Test("SkewY helper renders correctly")
-    func skewYRendering() {
+    @Test
+    func `SkewY helper renders correctly`() {
         let svgElement = rect(x: 0, y: 0, width: 30, height: 30)
             .skewY(30)
 
@@ -80,8 +78,8 @@ struct TransformTests {
         #expect(rendered.contains("transform=\"skewY(30)\""))
     }
 
-    @Test("Transform on group renders correctly")
-    func groupTransformRendering() {
+    @Test
+    func `Transform on group renders correctly`() {
         let svgElement = g {
             circle(cx: 0, cy: 0, r: 25)
             rect(x: -10, y: -10, width: 20, height: 20)

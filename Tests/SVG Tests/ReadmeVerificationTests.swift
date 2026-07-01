@@ -6,14 +6,14 @@
 //
 
 import SVG
-import SVG_Standard
+import Dimension_Primitives_Test_Support
 import Testing
 
-@Suite("README Verification")
-struct ReadmeVerificationTests {
+@Suite
+struct `README Verification` {
 
-    @Test("Overview example from README line 13-37")
-    func overviewExample() {
+    @Test
+    func `Overview example`() {
         let logo = svg(width: 200, height: 200) {
             defs {
                 linearGradient(id: "gradient", x1: "0%", y1: "0%", x2: "100%", y2: "100%") {
@@ -44,8 +44,8 @@ struct ReadmeVerificationTests {
         #expect(svgString.contains("text"))
     }
 
-    @Test("Quick Start example from README line 62-74")
-    func quickStartExample() {
+    @Test
+    func `Quick Start example`() {
         let icon = svg(viewBox: .init(minX: 0, minY: 0, width: 24, height: 24)) {
             path(d: "M12 2L2 7l10 5 10-5-10-5z")
                 .fill("currentColor")
@@ -64,15 +64,16 @@ struct ReadmeVerificationTests {
         #expect(svgString.contains("opacity=\"0.7\""))
     }
 
-    @Test("Basic shapes example from README line 82-96")
-    func basicShapesExample() {
+    @Test
+    func `Basic shapes example`() {
         let basicShapes = svg(width: 200, height: 200) {
             circle(cx: 50, cy: 50, r: 40)
                 .fill("red")
                 .stroke("black")
                 .strokeWidth(2)
 
-            rect(x: 100, y: 10, width: 80, height: 60, rx: 5)
+            rect(x: 100, y: 10, width: 80, height: 60)
+                .rx(5 as Double)
                 .fill("blue")
                 .opacity(0.5)
         }
@@ -96,8 +97,8 @@ struct ReadmeVerificationTests {
         #expect(output.contains("opacity=\"0.5\""))
     }
 
-    @Test("Gradients example from README line 102-115")
-    func gradientsExample() {
+    @Test
+    func `Gradients example`() {
         let gradientExample = svg(width: 200, height: 200) {
             defs {
                 linearGradient(id: "myGradient", x1: "0%", y1: "0%", x2: "100%", y2: "0%") {
@@ -128,8 +129,8 @@ struct ReadmeVerificationTests {
         #expect(output.contains("fill=\"url(#myGradient)\""))
     }
 
-    @Test("Text elements example from README line 121-130")
-    func textElementsExample() {
+    @Test
+    func `Text elements example`() {
         let textExample = svg(width: 200, height: 100) {
             text(x: 100, y: 50) { "Hello SVG" }
                 .fontSize(24)
@@ -152,8 +153,8 @@ struct ReadmeVerificationTests {
         #expect(output.contains("Hello SVG"))
     }
 
-    @Test("Testing example from README line 143-157")
-    func testingExample() {
+    @Test
+    func `Testing example`() {
         let logo = svg(width: 100, height: 100) {
             circle(cx: 50, cy: 50, r: 45)
                 .fill("blue")

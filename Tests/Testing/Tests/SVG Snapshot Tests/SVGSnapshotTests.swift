@@ -2,29 +2,18 @@
 //  SVGSnapshotTests.swift
 //  swift-svg
 //
-//  Created by Coen ten Thije Boonkkamp
-//
 
-import InlineSnapshotTesting
-import SVG
-import SVG_Standard
-import SVG_TestSupport
-import Testing
+import SVG_Test_Support
 
-@MainActor
-@Suite(
-    "SVG Snapshot Tests",
-    .serialized,
-    .snapshots(record: .never)
-)
-struct SVGSnapshotTests {
+// MARK: - Basic Shapes
 
-    // MARK: - Basic Shapes
+@Suite
+struct `SVG Snapshot Tests` {
 
-    @Test("Circle element snapshot")
-    func circleSnapshot() {
-        assertInlineSnapshot(
-            of: testSVG(width: 100, height: 100) {
+    @Test
+    func `Circle element snapshot`() {
+        snapshot(
+            testSVG(width: 100, height: 100) {
                 circle(cx: 50, cy: 50, r: 40)
                     .fill("red")
                     .stroke("black")
@@ -41,11 +30,13 @@ struct SVGSnapshotTests {
         }
     }
 
-    @Test("Rectangle element snapshot")
-    func rectangleSnapshot() {
-        assertInlineSnapshot(
-            of: testSVG(width: 120, height: 80) {
-                rect(x: 10, y: 10, width: 100, height: 60, rx: 5, ry: 5)
+    @Test
+    func `Rectangle element snapshot`() {
+        snapshot(
+            testSVG(width: 120, height: 80) {
+                rect(x: 10, y: 10, width: 100, height: 60)
+                    .rx(5 as Double)
+                    .ry(5 as Double)
                     .fill("blue")
                     .opacity(0.7)
             },
@@ -60,10 +51,10 @@ struct SVGSnapshotTests {
         }
     }
 
-    @Test("Ellipse element snapshot")
-    func ellipseSnapshot() {
-        assertInlineSnapshot(
-            of: testSVG(width: 200, height: 100) {
+    @Test
+    func `Ellipse element snapshot`() {
+        snapshot(
+            testSVG(width: 200, height: 100) {
                 ellipse(cx: 100, cy: 50, rx: 80, ry: 40)
                     .fill("green")
                     .strokeWidth(3)
@@ -80,10 +71,10 @@ struct SVGSnapshotTests {
         }
     }
 
-    @Test("Line element snapshot")
-    func lineSnapshot() {
-        assertInlineSnapshot(
-            of: testSVG(width: 200, height: 200) {
+    @Test
+    func `Line element snapshot`() {
+        snapshot(
+            testSVG(width: 200, height: 200) {
                 line(x1: 10, y1: 10, x2: 190, y2: 190)
                     .stroke("red")
                     .strokeWidth(2)
@@ -100,10 +91,10 @@ struct SVGSnapshotTests {
         }
     }
 
-    @Test("Polygon element snapshot")
-    func polygonSnapshot() {
-        assertInlineSnapshot(
-            of: testSVG(width: 200, height: 200) {
+    @Test
+    func `Polygon element snapshot`() {
+        snapshot(
+            testSVG(width: 200, height: 200) {
                 polygon(coordinates: [(100, 10), (40, 198), (190, 78), (10, 78), (160, 198)])
                     .fill("lime")
                     .stroke("purple")
@@ -120,10 +111,10 @@ struct SVGSnapshotTests {
         }
     }
 
-    @Test("Polyline element snapshot")
-    func polylineSnapshot() {
-        assertInlineSnapshot(
-            of: testSVG(width: 200, height: 200) {
+    @Test
+    func `Polyline element snapshot`() {
+        snapshot(
+            testSVG(width: 200, height: 200) {
                 polyline(points: "20,20 40,25 60,40 80,120 120,140 200,180")
                     .fill("none")
                     .stroke("black")
@@ -140,10 +131,10 @@ struct SVGSnapshotTests {
         }
     }
 
-    @Test("Path element snapshot")
-    func pathSnapshot() {
-        assertInlineSnapshot(
-            of: testSVG(width: 200, height: 200) {
+    @Test
+    func `Path element snapshot`() {
+        snapshot(
+            testSVG(width: 200, height: 200) {
                 path(d: "M 10 10 L 90 10 L 50 80 Z")
                     .fill("orange")
                     .stroke("black")
@@ -161,10 +152,10 @@ struct SVGSnapshotTests {
 
     // MARK: - Container Elements
 
-    @Test("Group element snapshot")
-    func groupSnapshot() {
-        assertInlineSnapshot(
-            of: testSVG(width: 200, height: 200) {
+    @Test
+    func `Group element snapshot`() {
+        snapshot(
+            testSVG(width: 200, height: 200) {
                 g {
                     circle(cx: 50, cy: 50, r: 30)
                         .fill("red")
@@ -189,10 +180,10 @@ struct SVGSnapshotTests {
         }
     }
 
-    @Test("Nested groups snapshot")
-    func nestedGroupsSnapshot() {
-        assertInlineSnapshot(
-            of: testSVG(width: 300, height: 200) {
+    @Test
+    func `Nested groups snapshot`() {
+        snapshot(
+            testSVG(width: 300, height: 200) {
                 g {
                     g {
                         circle(cx: 0, cy: 0, r: 20)
@@ -232,10 +223,10 @@ struct SVGSnapshotTests {
 
     // MARK: - Text Elements
 
-    @Test("Text element snapshot")
-    func textSnapshot() {
-        assertInlineSnapshot(
-            of: testSVG(width: 300, height: 100) {
+    @Test
+    func `Text element snapshot`() {
+        snapshot(
+            testSVG(width: 300, height: 100) {
                 text(x: 10, y: 30) {
                     "Hello, SVG!"
                 }
@@ -254,10 +245,10 @@ struct SVGSnapshotTests {
         }
     }
 
-    @Test("Text with tspan snapshot")
-    func textWithTspanSnapshot() {
-        assertInlineSnapshot(
-            of: testSVG(width: 300, height: 100) {
+    @Test
+    func `Text with tspan snapshot`() {
+        snapshot(
+            testSVG(width: 300, height: 100) {
                 text(x: 10, y: 30) {
                     tspan { "First line" }
                     tspan(x: 10, dy: 20) {
@@ -290,10 +281,10 @@ struct SVGSnapshotTests {
 
     // MARK: - Gradients
 
-    @Test("Linear gradient snapshot")
-    func linearGradientSnapshot() {
-        assertInlineSnapshot(
-            of: testSVG(width: 200, height: 100) {
+    @Test
+    func `Linear gradient snapshot`() {
+        snapshot(
+            testSVG(width: 200, height: 100) {
                 defs {
                     linearGradient(
                         id: "grad1",
@@ -329,10 +320,10 @@ struct SVGSnapshotTests {
         }
     }
 
-    @Test("Radial gradient snapshot")
-    func radialGradientSnapshot() {
-        assertInlineSnapshot(
-            of: testSVG(width: 200, height: 200) {
+    @Test
+    func `Radial gradient snapshot`() {
+        snapshot(
+            testSVG(width: 200, height: 200) {
                 defs {
                     radialGradient(
                         id: "grad2",
@@ -369,10 +360,10 @@ struct SVGSnapshotTests {
 
     // MARK: - Transforms
 
-    @Test("Transform combinations snapshot")
-    func transformCombinationsSnapshot() {
-        assertInlineSnapshot(
-            of: testSVG(width: 300, height: 300) {
+    @Test
+    func `Transform combinations snapshot`() {
+        snapshot(
+            testSVG(width: 300, height: 300) {
                 rect(x: 50, y: 50, width: 100, height: 100)
                     .fill("red")
                     .transform("translate(100, 100) rotate(45) scale(0.5, 0.5)")
@@ -390,10 +381,10 @@ struct SVGSnapshotTests {
 
     // MARK: - Clipping and Masking
 
-    @Test("ClipPath snapshot")
-    func clipPathSnapshot() {
-        assertInlineSnapshot(
-            of: testSVG(width: 200, height: 200) {
+    @Test
+    func `ClipPath snapshot`() {
+        snapshot(
+            testSVG(width: 200, height: 200) {
                 defs {
                     clipPath(id: "clip1") {
                         circle(cx: 100, cy: 100, r: 50)
@@ -421,10 +412,10 @@ struct SVGSnapshotTests {
         }
     }
 
-    @Test("Mask snapshot")
-    func maskSnapshot() {
-        assertInlineSnapshot(
-            of: testSVG(width: 200, height: 200) {
+    @Test
+    func `Mask snapshot`() {
+        snapshot(
+            testSVG(width: 200, height: 200) {
                 defs {
                     mask(id: "mask1") {
                         rect(x: 0, y: 0, width: 200, height: 200)
@@ -459,10 +450,10 @@ struct SVGSnapshotTests {
 
     // MARK: - Complex Examples
 
-    @Test("Complex SVG composition snapshot")
-    func complexCompositionSnapshot() {
-        assertInlineSnapshot(
-            of: testSVG(
+    @Test
+    func `Complex SVG composition snapshot`() {
+        snapshot(
+            testSVG(
                 width: 400,
                 height: 300,
                 viewBox: SVG_Standard.Types.ViewBox(minX: 0, minY: 0, width: 400, height: 300)

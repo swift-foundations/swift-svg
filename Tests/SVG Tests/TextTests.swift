@@ -2,18 +2,16 @@
 //  TextTests.swift
 //  swift-svg
 //
-//  Created by Coen ten Thije Boonkkamp
-//
 
 import SVG
-import SVG_Standard
+import Dimension_Primitives_Test_Support
 import Testing
 
-@Suite("Text Elements Tests")
-struct TextTests {
+@Suite
+struct `Text Elements Tests` {
 
-    @Test("Text element renders correctly")
-    func textRendering() {
+    @Test
+    func `Text element renders correctly`() {
         let svgElement = text(x: 10, y: 30) { "Hello, World!" }
             .fontFamily("Arial")
             .fontSize(20)
@@ -29,8 +27,8 @@ struct TextTests {
         #expect(rendered.contains(#">Hello, World!</text>"#))
     }
 
-    @Test("Text with tspan renders correctly")
-    func textWithTspanRendering() {
+    @Test
+    func `Text with tspan renders correctly`() {
         let svgElement = text(x: 10, y: 30) {
             tspan { "First line" }
             tspan(x: 10, dy: 20) { "Second line" }
@@ -47,8 +45,8 @@ struct TextTests {
         #expect(rendered.contains(#"</text>"#))
     }
 
-    @Test("Text with rotate attribute renders correctly")
-    func textRotationRendering() {
+    @Test
+    func `Text with rotate attribute renders correctly`() {
         let svgElement = text(x: 100, y: 100) { "Rotated" }
             .attribute("rotate", "0 15 30 45 60")
             .fill("purple")
@@ -58,8 +56,8 @@ struct TextTests {
         #expect(rendered.contains(#">Rotated</text>"#))
     }
 
-    @Test("Text anchor renders correctly")
-    func textAnchorRendering() {
+    @Test
+    func `Text anchor renders correctly`() {
         let svgElement = text(x: 150, y: 50) { "Centered" }
             .textAnchor("middle")
             .fill("blue")
