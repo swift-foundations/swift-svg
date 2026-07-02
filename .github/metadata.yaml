@@ -1,6 +1,6 @@
 # .github/metadata.yaml
 # Triaged by AI-assisted bulk pass (2026-04-29).
-description: "SVG for Swift."
+description: "A declarative, result-builder-based W3C SVG 2 document builder and renderer for Swift."
 topics:
   - foundations
   - svg
