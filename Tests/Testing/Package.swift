@@ -5,13 +5,16 @@ import PackageDescription
 let package = Package(
     name: "testing",
     platforms: [
-        .macOS(.v26),
+        .macOS(.v26)
     ],
     dependencies: [
         .package(path: "../.."),
         .package(url: "https://github.com/swift-foundations/swift-testing.git", branch: "main"),
         .package(url: "https://github.com/swift-foundations/swift-svg-render.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-dimension-primitives.git", branch: "main"),
+        .package(
+            url: "https://github.com/swift-primitives/swift-dimension-primitives.git",
+            branch: "main"
+        ),
     ],
     targets: [
         .target(
@@ -20,7 +23,10 @@ let package = Package(
                 .product(name: "SVG", package: "swift-svg"),
                 .product(name: "Testing", package: "swift-testing"),
                 .product(name: "SVG Rendering", package: "swift-svg-render"),
-                .product(name: "Dimension Primitives Test Support", package: "swift-dimension-primitives"),
+                .product(
+                    name: "Dimension Primitives Test Support",
+                    package: "swift-dimension-primitives"
+                ),
             ],
             path: "Support"
         ),

@@ -5,8 +5,8 @@
 //  README verification tests - ensures all code examples compile and work
 //
 
-import SVG
 import Dimension_Primitives_Test_Support
+import SVG
 import Testing
 
 @Suite
