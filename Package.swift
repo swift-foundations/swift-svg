@@ -45,7 +45,10 @@ let package = Package(
             dependencies: [
                 .svg,
                 .product(name: "Dimension Primitives Test Support", package: "swift-dimension-primitives"),
-            ]
+            ],
+            // Explicit path: the nested test manifest at Tests/Package.swift makes
+            // SwiftPM skip automatic target discovery under Tests/.
+            path: "Tests/SVG Tests"
         ),
     ],
     swiftLanguageModes: [.v6]

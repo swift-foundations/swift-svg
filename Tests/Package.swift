@@ -8,7 +8,7 @@ let package = Package(
         .macOS(.v26)
     ],
     dependencies: [
-        .package(path: "../.."),
+        .package(path: ".."),
         .package(url: "https://github.com/swift-foundations/swift-testing.git", branch: "main"),
         .package(url: "https://github.com/swift-foundations/swift-svg-render.git", branch: "main"),
         .package(
@@ -35,7 +35,8 @@ let package = Package(
             dependencies: [
                 "SVG Test Support",
                 .product(name: "Testing", package: "swift-testing"),
-            ]
+            ],
+            path: "SVG Snapshot Tests"
         ),
     ],
     swiftLanguageModes: [.v6]
