@@ -12,7 +12,7 @@ extension Target.Dependency {
 }
 
 extension Target.Dependency {
-    static var svgRendering: Self {
+    static var rendering: Self {
         .product(name: "SVG Rendering", package: "swift-svg-render")
     }
 }
@@ -37,7 +37,7 @@ let package = Package(
         .target(
             name: .svg,
             dependencies: [
-                .svgRendering,
+                .rendering,
             ]
         ),
         .testTarget(
