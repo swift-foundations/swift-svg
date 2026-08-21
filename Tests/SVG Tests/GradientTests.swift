@@ -1,8 +1,3 @@
-//
-//  GradientTests.swift
-//  swift-svg
-//
-
 import Dimension_Primitives_Test_Support
 import SVG
 import Testing

@@ -1,8 +1,3 @@
-//
-//  DebugDetailedTest.swift
-//  swift-svg
-//
-
 import Dimension_Primitives_Test_Support
 import SVG
 import Testing
@@ -12,7 +7,7 @@ struct `Debug Detailed` {
 
     @Test
     func `Detailed attribute flow`() {
-        // Test circle with method chaining
+
         let circleElement = circle(cx: 50, cy: 50, r: 40)
             .fill("blue")
             .stroke("black")
@@ -25,7 +20,6 @@ struct `Debug Detailed` {
         #expect(circleRendered.contains("cy=\"50"))
         #expect(circleRendered.contains("r=\"40"))
 
-        // Full circle with attributes using method chaining
         let chainedCircle = circle(cx: 50, cy: 50, r: 40)
             .fill("green")
             .stroke("red")

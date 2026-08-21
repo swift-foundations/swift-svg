@@ -1,11 +1,4 @@
-//
-//  SVGSnapshotTests.swift
-//  swift-svg
-//
-
 import SVG_Test_Support
-
-// MARK: - Basic Shapes
 
 @Suite
 struct `SVG Snapshot Tests` {
@@ -150,8 +143,6 @@ struct `SVG Snapshot Tests` {
         }
     }
 
-    // MARK: - Container Elements
-
     @Test
     func `Group element snapshot`() {
         snapshot(
@@ -221,8 +212,6 @@ struct `SVG Snapshot Tests` {
         }
     }
 
-    // MARK: - Text Elements
-
     @Test
     func `Text element snapshot`() {
         snapshot(
@@ -278,8 +267,6 @@ struct `SVG Snapshot Tests` {
             """
         }
     }
-
-    // MARK: - Gradients
 
     @Test
     func `Linear gradient snapshot`() {
@@ -358,8 +345,6 @@ struct `SVG Snapshot Tests` {
         }
     }
 
-    // MARK: - Transforms
-
     @Test
     func `Transform combinations snapshot`() {
         snapshot(
@@ -378,8 +363,6 @@ struct `SVG Snapshot Tests` {
             """
         }
     }
-
-    // MARK: - Clipping and Masking
 
     @Test
     func `ClipPath snapshot`() {
@@ -448,8 +431,6 @@ struct `SVG Snapshot Tests` {
         }
     }
 
-    // MARK: - Complex Examples
-
     @Test
     func `Complex SVG composition snapshot`() {
         snapshot(
@@ -472,11 +453,9 @@ struct `SVG Snapshot Tests` {
                     }
                 }
 
-                // Background
                 rect(x: 0, y: 0, width: 400, height: 300)
                     .fill("url(#bg-gradient)")
 
-                // Clipped group
                 g {
                     rect(x: 0, y: 0, width: 100, height: 100)
                         .fill("yellow")
@@ -484,7 +463,6 @@ struct `SVG Snapshot Tests` {
                 .clipPath("url(#star-clip)")
                 .transform("translate(150, 100) scale(2, 2)")
 
-                // Text overlay
                 text(x: 200, y: 250) {
                     "SVG Snapshot Testing"
                 }

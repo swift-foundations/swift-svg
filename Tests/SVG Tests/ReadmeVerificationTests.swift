@@ -1,10 +1,3 @@
-//
-//  ReadmeVerificationTests.swift
-//  swift-svg
-//
-//  README verification tests - ensures all code examples compile and work
-//
-
 import Dimension_Primitives_Test_Support
 import SVG
 import Testing

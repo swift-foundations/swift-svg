@@ -1,8 +1,3 @@
-//
-//  DocumentTests.swift
-//  swift-svg
-//
-
 import Dimension_Primitives_Test_Support
 import SVG
 import Testing
@@ -47,7 +42,7 @@ struct `Document Tests` {
 
         let rendered = String(svgElement, configuration: .pretty)
         #expect(rendered.contains("\n"))
-        #expect(rendered.contains("  "))  // Indentation
+        #expect(rendered.contains("  "))
     }
 
     @Test

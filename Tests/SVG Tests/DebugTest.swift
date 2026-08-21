@@ -1,8 +1,3 @@
-//
-//  DebugTest.swift
-//  swift-svg
-//
-
 import Dimension_Primitives_Test_Support
 import SVG
 import Testing
@@ -44,7 +39,6 @@ struct `Debug` {
 
         let output = String(svgElement, configuration: .pretty)
 
-        // Check the expected structure
         #expect(output.contains("<svg"))
         #expect(output.contains("width=\"100\""))
         #expect(output.contains("height=\"100\""))
